@@ -38,38 +38,11 @@ const TimeScroller = ({title, data, onChange}) => {
   };
 
   const renderItem = ({item, index}) => {
-    const makeAnimated = (a, b, c) => {
-      return {
-        inputRange: [...data.map((_, i) => i * itemSize)],
-        outputRange: [
-          ...data.map((_, i) => {
-            const center = i + 2;
-            if (center === index) {
-              return a;
-            } else if (center + 1 === index || center - 1 === index) {
-              return b;
-            } else {
-              return c;
-            }
-          }),
-        ],
-      };
-    };
-
     return (
       <Animated.View
         style={[
           {
             width: itemSize,
-            opacity: scrollAnimatedValue.interpolate(makeAnimated(1, 0.6, 0.3)),
-            transform: [
-              {
-                scale: scrollAnimatedValue.interpolate(makeAnimated(1.2, 0.9, 0.8)),
-              },
-              {
-                scaleX: I18nManager.isRTL ? -1 : 1,
-              },
-            ],
           },
           style.listItem,
         ]}>
