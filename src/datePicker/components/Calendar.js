@@ -8,7 +8,7 @@ const Calendar = () => {
   const {options, state, utils, onSelectedChange} = useCalendar();
   const [mainState] = state;
   const style = styles(options);
-  const [{shownAnimation}, changeMonthAnimation] = utils.useMonthAnimation(
+  const [{}, changeMonthAnimation] = utils.useMonthAnimation(
     mainState.activeDate,
     options.daysAnimationDistance,
   );
@@ -28,9 +28,9 @@ const Calendar = () => {
         ))}
       </View>
       <View style={style.daysContainer}>
-        <Animated.View style={[style.days, shownAnimation]}>
+        <View style={style.days}>
           <Days />
-        </Animated.View>
+        </View>
       </View>
     </View>
   );
